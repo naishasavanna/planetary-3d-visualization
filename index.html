@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planetary 3D — Visualisation orbitale interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+</script>
+</head>
+<body>
+<canvas id="scene" aria-label="Système planétaire 3D"></canvas>
+
+<header>
+  <h1>Planetary 3D</h1>
+  <p>Plus une planète est loin de son étoile, plus elle se déplace lentement.</p>
+</header>
+
+<aside id="panel">
+  <div class="modes" role="tablist">
+    <button data-mode="explore" class="on">Exploration</button>
+    <button data-mode="sim">Simulation</button>
+    <button data-mode="learn">Apprentissage</button>
+  </div>
+
+  <div class="row">
+    <button id="play">Pause</button>
+    <button id="reset">Réinitialiser</button>
+    <button id="orbits" class="on">Orbites</button>
+  </div>
+
+  <label>Vitesse de la simulation <output id="o-speed">1×</output>
+    <input id="speed" type="range" min="0.1" max="10" step="0.1" value="1"></label>
+
+  <div id="sim-controls" hidden>
+    <label>Masse de l'étoile <output id="o-mass">1,00 M☉</output>
+      <input id="mass" type="range" min="0.2" max="3" step="0.05" value="1"></label>
+    <label>Distance de la planète sélectionnée <output id="o-dist">—</output>
+      <input id="dist" type="range" min="0.3" max="35" step="0.05" value="1" disabled></label>
+    <div class="row">
+      <button id="add">Ajouter une planète</button>
+      <button id="remove" disabled>Supprimer</button>
+    </div>
+  </div>
+
+  <section id="info"><p class="empty">Cliquez sur une planète pour afficher ses données.</p></section>
+  <section id="lesson" hidden></section>
+</aside>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
